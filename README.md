@@ -1,4 +1,4 @@
-# Proto-MoE: Prototype-Guided Mixture-of-Experts for Predictive Modeling of Pediatric Drug-Induced Liver Injury
+# Prototype-guided mixture-of-experts enables subgroup-specific risk modeling for pediatric drug-induced liver injury
 
 ## Project Overview
 
