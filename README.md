@@ -1,6 +1,6 @@
 # Proto-MoE: Prototype-Guided Mixture-of-Experts for Predictive Modeling of Pediatric Drug-Induced Liver Injury
 
-Official implementation of **Proto-MoE**, a Prototype-Guided Mixture-of-Experts framework for predictive modeling of pediatric drug-induced liver injury (DILI) from electronic health record data. Proto-MoE routes each patient through prototype-conditioned expert networks built on homogeneous patient-similarity graphs or heterogeneous biomedical knowledge graphs.
+A Prototype-Guided Mixture-of-Experts framework for predictive modeling of pediatric drug-induced liver injury (DILI) from electronic health record data. Proto-MoE routes each patient through prototype-conditioned expert networks built on homogeneous patient-similarity graphs or heterogeneous biomedical knowledge graphs.
 
 ## Repository Structure
 
@@ -32,19 +32,15 @@ Requires Python 3.10+ and a CUDA-capable GPU for graph model training (CPU fallb
 pip install -r requirements.txt
 ```
 
-> `torch-geometric` requires `torch` to be installed first. See the
-> [PyG installation guide](https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html)
-> if you need a specific CUDA build of PyTorch.
-
 ## Data Preparation
 
 Place the following files in the project root (they are **not** redistributed with this repository):
 
 | File | Description |
 |------|-------------|
-| `ADR-Train.csv` | Internal training cohort (GB18030-encoded clinical tabular data) |
+| `ADR-Train.csv` | Internal training cohort |
 | `ADR-Valid.csv` | External validation cohort (same schema) |
-| `CTD.csv` | Drug–gene interaction matrix (Comparative Toxicogenomics Database) |
+| `CTD.csv` | Drug–gene interaction matrix |
 | `CTD/phenotype/CTD-phenotype.csv` | Phenotype–gene association matrix |
 
 Each cohort file contains binary drug/clinical feature columns, a patient identifier column, and a binary `label` column (`1` = DILI case).
@@ -87,15 +83,15 @@ python Heterogeneous/MAGNN.py
 python Heterogeneous/RGCN.py
 ```
 
-Each script runs prototype-count selection (knee/elbow method), 5-fold cross-validation, three-stage training of the final model, independent external validation, and visualization. All artifacts (checkpoints, per-prototype sample exports, elbow curves, prediction `.npz` files, metric CSVs) are written to `outputs/<ModelName>ProtoMoE/`.
+Each script runs prototype-count selection (knee/elbow method), 5-fold cross-validation, three-stage training of the final model, independent external validation, and visualization. 
 
-### 4. DS/DES dynamic selection suite (optional)
+### 4. DS/DES dynamic selection suite 
 
 ```bash
 python dynamic_selection.py --train path/to/train.csv --external path/to/valid.csv
 ```
 
-Trains the eleven-classifier baseline pool and evaluates all 14 Dynamic Selection / Dynamic Ensemble Selection methods (deslib) under the same internal cross-validation and frozen-threshold external protocol as the graph models. Results are written to `ds_des_results/`.
+Trains the eleven-classifier baseline pool and evaluates all 14 Dynamic Selection / Dynamic Ensemble Selection methods (deslib) under the same internal cross-validation and frozen-threshold external protocol as the graph models. 
 
 ## Core Technical Architecture
 
@@ -157,8 +153,4 @@ The project implements the following expert types:
 3. **Stage 3: Fine-tuning**
    - Unfreeze all modules
    - Jointly optimize all losses
-
-## Reproducibility
-
-All scripts use a fixed random seed (`42`) for data splitting, model initialization, and training. `torch.backends.cuda.matmul.allow_tf32` is enabled for GPU throughput.
 
