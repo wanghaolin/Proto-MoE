@@ -1,28 +1,101 @@
-# Prototype-guided mixture-of-experts enables subgroup-specific risk modeling for pediatric drug-induced liver injury
+# Proto-MoE: Prototype-Guided Mixture-of-Experts for Predictive Modeling of Pediatric Drug-Induced Liver Injury
 
-## Project Overview
+Official implementation of **Proto-MoE**, a Prototype-Guided Mixture-of-Experts framework for predictive modeling of pediatric drug-induced liver injury (DILI) from electronic health record data. Proto-MoE routes each patient through prototype-conditioned expert networks built on homogeneous patient-similarity graphs or heterogeneous biomedical knowledge graphs.
 
-This project implements a Prototype-Guided Mixture-of-Experts (Proto-MoE) model for predictive modeling of pediatric drug-induced liver injury.
-
-## Project Structure
+## Repository Structure
 
 ```
-Proto-MoE-github/
-├── baseline.py              # Traditional ML and tabular deep learning baseline models
-├── Graph-Construction/      # Graph construction module
-│   ├── Biomedical_Knowledge_Graph.py   # Heterogeneous biomedical knowledge graph construction
-│   └── Patient_Similarity_Graph.py     # Homogeneous patient similarity graph construction
-├── homogeneous/             # Homogeneous graph models
-│   ├── GCN.py               # GCN-based Proto-MoE
-│   ├── GAT.py               # GAT-based Proto-MoE
-│   ├── GIN.py               # GIN-based Proto-MoE
-│   └── GraphSAGE.py         # GraphSAGE-based Proto-MoE
-└── Heterogeneous/           # Heterogeneous graph models
-    ├── HAN.py               # HAN-based Proto-MoE
-    ├── HetGNN.py            # HetGNN-based Proto-MoE
-    ├── MAGNN.py             # MAGNN-based Proto-MoE
-    └── RGCN.py              # RGCN-based Proto-MoE
+Proto-MoE/
+├── baseline.py                            # Traditional ML and tabular deep learning baselines
+├── dynamic_selection.py                   # Dynamic Selection / Ensemble Selection (DS/DES) validation suite
+├── requirements.txt                       # Python dependencies
+├── Graph-Construction/                    # Graph construction modules
+│   ├── Biomedical_Knowledge_Graph.py      # Heterogeneous biomedical knowledge graph construction
+│   └── Patient_Similarity_Graph.py        # Homogeneous patient similarity graph construction
+├── homogeneous/                           # Homogeneous graph Proto-MoE variants
+│   ├── GCN.py                             # GCN-based Proto-MoE
+│   ├── GAT.py                             # GAT-based Proto-MoE
+│   ├── GIN.py                             # GIN-based Proto-MoE
+│   └── GraphSAGE.py                       # GraphSAGE-based Proto-MoE
+└── Heterogeneous/                         # Heterogeneous graph Proto-MoE variants
+    ├── HAN.py                             # HAN-based Proto-MoE
+    ├── HetGNN.py                          # HetGNN-based Proto-MoE
+    ├── MAGNN.py                           # MAGNN-based Proto-MoE
+    └── RGCN.py                            # RGCN-based Proto-MoE
 ```
+
+## Installation
+
+Requires Python 3.10+ and a CUDA-capable GPU for graph model training (CPU fallback is supported but slow).
+
+```bash
+pip install -r requirements.txt
+```
+
+> `torch-geometric` requires `torch` to be installed first. See the
+> [PyG installation guide](https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html)
+> if you need a specific CUDA build of PyTorch.
+
+## Data Preparation
+
+Place the following files in the project root (they are **not** redistributed with this repository):
+
+| File | Description |
+|------|-------------|
+| `ADR-Train.csv` | Internal training cohort (GB18030-encoded clinical tabular data) |
+| `ADR-Valid.csv` | External validation cohort (same schema) |
+| `CTD.csv` | Drug–gene interaction matrix (Comparative Toxicogenomics Database) |
+| `CTD/phenotype/CTD-phenotype.csv` | Phenotype–gene association matrix |
+
+Each cohort file contains binary drug/clinical feature columns, a patient identifier column, and a binary `label` column (`1` = DILI case).
+
+## Usage
+
+Run all commands from the project root.
+
+### 1. Build graph data
+
+```bash
+# Homogeneous patient similarity graph -> train_graph-homo.pt, valid_graph-homo.pt
+python Graph-Construction/Patient_Similarity_Graph.py
+
+# Heterogeneous biomedical knowledge graph -> train_graph-Hetero.pt, valid_graph-Hetero.pt
+python Graph-Construction/Biomedical_Knowledge_Graph.py
+```
+
+### 2. Run baseline models
+
+```bash
+python baseline.py
+```
+
+Performs 5-fold stratified cross-validation on the training cohort to tune probability thresholds, then evaluates on the external validation cohort. Results (MCC, Precision, Recall, F1, ROC-AUC, AUPRC, G-Mean) are printed as tab-separated rows, ready to paste into a spreadsheet.
+
+### 3. Run Proto-MoE graph models
+
+```bash
+# Homogeneous variants
+python homogeneous/GCN.py
+python homogeneous/GAT.py
+python homogeneous/GIN.py
+python homogeneous/GraphSAGE.py
+
+# Heterogeneous variants
+python Heterogeneous/HAN.py
+python Heterogeneous/HetGNN.py
+python Heterogeneous/MAGNN.py
+python Heterogeneous/RGCN.py
+```
+
+Each script runs prototype-count selection (knee/elbow method), 5-fold cross-validation, three-stage training of the final model, independent external validation, and visualization. All artifacts (checkpoints, per-prototype sample exports, elbow curves, prediction `.npz` files, metric CSVs) are written to `outputs/<ModelName>ProtoMoE/`.
+
+### 4. DS/DES dynamic selection suite (optional)
+
+```bash
+python dynamic_selection.py --train path/to/train.csv --external path/to/valid.csv
+```
+
+Trains the eleven-classifier baseline pool and evaluates all 14 Dynamic Selection / Dynamic Ensemble Selection methods (deslib) under the same internal cross-validation and frozen-threshold external protocol as the graph models. Results are written to `ds_des_results/`.
 
 ## Core Technical Architecture
 
@@ -30,13 +103,13 @@ Proto-MoE-github/
 
 #### Homogeneous Graph (Patient Similarity Graph)
 - Constructs patient connections based on Jaccard similarity
-- Computes patient similarity using drug features
-- Supports k-nearest neighbor and similarity threshold filtering
+- Computes patient similarity using binary drug-exposure features
+- Supports k-nearest-neighbor and similarity-threshold filtering, plus small-component bridging
 
 #### Heterogeneous Graph (Biomedical Knowledge Graph)
 - Contains 6 node types: patient, drug, symptom, disease, gene, phenotype
-- Supports multiple edge types: takes, has, interacts_with, associated_with, etc.
-- Integrates drug-gene interaction and gene-phenotype association data
+- Supports multiple edge types: takes/taken_by, has/had_by, interacts_with/interacted_by, associated_with/associated_by
+- Integrates drug–gene interaction and gene–phenotype association data from CTD
 
 ### 2. Mixture of Experts (MoE)
 
@@ -69,7 +142,7 @@ The project implements the following expert types:
 - Expert Diversity Loss
 - Uncertainty Weighted Loss
 
-## Three-Stage Training Strategy
+### 6. Three-Stage Training Strategy
 
 1. **Stage 1: Representation Learning**
    - Freeze router and expert layers
@@ -85,55 +158,7 @@ The project implements the following expert types:
    - Unfreeze all modules
    - Jointly optimize all losses
 
-## Usage
+## Reproducibility
 
-### 1. Data Preparation
+All scripts use a fixed random seed (`42`) for data splitting, model initialization, and training. `torch.backends.cuda.matmul.allow_tf32` is enabled for GPU throughput.
 
-Ensure the following data files exist in the project root directory:
-- `ADR-Train.csv` - Training dataset
-- `ADR-Valid.csv` - Validation dataset
-- `CTD.csv` - Drug-gene interaction data
-- `CTD/phenotype/CTD-phenotype.csv` - Phenotype-gene association data
-
-### 2. Build Graph Data
-
-```python
-# Build homogeneous graph
-python Graph-Construction/Patient_Similarity_Graph.py
-
-# Build heterogeneous graph
-python Graph-Construction/Biomedical_Knowledge_Graph.py
-```
-
-### 3. Run Baseline Models
-
-```python
-python baseline.py
-```
-
-### 4. Run Graph Models
-
-```python
-# Homogeneous graph models
-python homogeneous/GCN.py
-python homogeneous/GAT.py
-python homogeneous/GIN.py
-python homogeneous/GraphSAGE.py
-
-# Heterogeneous graph models
-python Heterogeneous/HAN.py
-python Heterogeneous/HetGNN.py
-python Heterogeneous/MAGNN.py
-python Heterogeneous/RGCN.py
-```
-
-## Evaluation Metrics
-
-The project supports the following evaluation metrics:
-- F1 Score
-- Matthews Correlation Coefficient (MCC)
-- Precision
-- Recall
-- AUC-ROC
-- AUPRC (Area Under Precision-Recall Curve)
-- G-Mean

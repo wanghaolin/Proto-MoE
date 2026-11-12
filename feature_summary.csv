@@ -1,0 +1,175 @@
+Cohort,Group,Feature category,Feature,Feature description,Variable type,Cohort N,Observed N,Missing N,Missing (%),Value 1 N,Value 1 (%),Mean,Sample SD,Median,Q1 (25th percentile),Q3 (75th percentile),IQR (Q3 - Q1),Minimum,Maximum,Missing value definition,Coding
+Internal,All,Demographic,Sex(Female),Sex,Binary,9948,9946,2,0.02010454362685967,3812,38.319260152794534,,,,,,,,,Raw blank; observed zero retained,0 = Male; 1 = Female
+Internal,All,Demographic,Age,Age at encounter (years),Continuous,9948,9948,0,0,,,4.4793928427824685,4.020366062017479,3,1,7,6,0,18,Raw blank; observed zero retained,
+Internal,All,Medication,Penicillin,Penicillin,Binary,9948,9948,0,0,8298,83.41375150784077,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Cephalosporins,Cephalosporins,Binary,9948,9948,0,0,7614,76.53799758745477,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Aminoglycosides,Aminoglycosides,Binary,9948,9948,0,0,842,8.464012866907922,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Macrolides antibiotics,Macrolides antibiotics,Binary,9948,9948,0,0,1385,13.922396461600322,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Anti-tumor antibiotics,Anti-tumor antibiotics,Binary,9948,9948,0,0,577,5.800160836349015,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Other antibiotics,Other antibiotics,Binary,9948,9948,0,0,86,0.8644953759549658,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Ibuprofen,Ibuprofen,Binary,9948,9948,0,0,4304,43.26497788500201,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Dexamethasone,Dexamethasone,Binary,9948,9948,0,0,2025,20.355850422195417,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Ambroxol,Ambroxol,Binary,9948,9948,0,0,6011,60.42420587052674,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Lidocaine,Lidocaine,Binary,9948,9948,0,0,2230,22.416566143948533,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Cytarabine,Cytarabine,Binary,9948,9948,0,0,735,7.388419782870929,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Ribavirin,Ribavirin,Binary,9948,9948,0,0,5024,50.502613590671494,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Granisetron,Granisetron,Binary,9948,9948,0,0,936,9.408926417370326,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Adenosine,Adenosine,Binary,9948,9948,0,0,4645,46.692802573381584,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Amino acid,Amino acid,Binary,9948,9948,0,0,3069,30.850422195416165,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Heparin,Heparin,Binary,9948,9948,0,0,4022,40.4302372336148,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Mesna,Mesna,Binary,9948,9948,0,0,507,5.0965018094089265,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Sodium Sulfonate,Sodium Sulfonate,Binary,9948,9948,0,0,2476,24.88942501005227,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Methotrexate,Methotrexate,Binary,9948,9948,0,0,809,8.132287897064737,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Furosemide,Furosemide,Binary,9948,9948,0,0,1136,11.419380780056292,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Budesonide,Budesonide,Binary,9948,9948,0,0,4699,47.23562525130679,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Chloral hydrate,Chloral hydrate,Binary,9948,9948,0,0,3019,30.34780860474467,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Prednisone,Prednisone,Binary,9948,9948,0,0,1022,10.27342179332529,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Mannitol,Mannitol,Binary,9948,9948,0,0,1256,12.625653397667874,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Vincristine,Vincristine,Binary,9948,9948,0,0,450,4.523522316043426,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Ipratropium Bromide,Ipratropium Bromide,Binary,9948,9948,0,0,2835,28.498190591073584,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Omeprazole,Omeprazole,Binary,9948,9948,0,0,1365,13.721351025331725,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Dehydroandrograpolide,Dehydroandrograpolide,Binary,9948,9948,0,0,2253,22.64776839565742,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Phosphocreatine,Phosphocreatine,Binary,9948,9948,0,0,2217,22.285886610373943,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Cimetidine,Cimetidine,Binary,9948,9948,0,0,4637,46.61238439887415,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Salbutamol,Salbutamol,Binary,9948,9948,0,0,2161,21.722959388821874,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Glycerine Enema,Glycerine Enema,Binary,9948,9948,0,0,2114,21.250502613590672,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,RhGM-CSF,RhGM-CSF,Binary,9948,9948,0,0,433,4.352633695215118,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Mentha canadensis L.,Mentha canadensis L.,Binary,9948,9948,0,0,1293,12.997587454764776,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Montmorillonite,Montmorillonite,Binary,9948,9948,0,0,1481,14.887414555689586,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Kangfuxin Liquid,Kangfuxin Liquid,Binary,9948,9948,0,0,668,6.71491757137113,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Cyclophosphamide,Cyclophosphamide,Binary,9948,9948,0,0,636,6.393244873341375,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,6-Mercaptopurine,6-Mercaptopurine,Binary,9948,9948,0,0,391,3.9304382790510655,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Calamine camphor lotion,Calamine camphor lotion,Binary,9948,9948,0,0,1036,10.414153598713309,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Calcium Carbonate,Calcium Carbonate,Binary,9948,9948,0,0,776,7.800562927221552,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Loratadine,Loratadine,Binary,9948,9948,0,0,746,7.498994772818657,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Medication,Golden Bifid,Golden Bifid,Binary,9948,9948,0,0,1850,18.596702854845194,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Laboratory Tests,AST,Aspartate aminotransferase (venous blood),Continuous,9948,9766,182,1.82951347004423,,,38.519148064714315,23.256201457407805,32.8,25.1,43.8,18.699999999999996,3.2,199.9,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,LDH,Lactate dehydrogenase (venous blood),Continuous,9948,9944,4,0.04020908725371934,,,285.30344931617054,128.06850108712075,259.4,209,323.7,114.69999999999999,60,2259.2,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,ALP,Alkaline phosphatase (venous blood),Continuous,9948,9840,108,1.0856453558504222,,,171.73794715447153,67.85013716251503,162.14999999999998,124.57499999999999,208.3,83.72500000000002,16.8,500,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,TBIL,Total bilirubin (venous blood),Continuous,9948,9886,62,0.6232408524326498,,,9.889129071414121,15.170417618623759,6.9,4.2,10.7,6.499999999999999,0,199.3,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,TP,Total protein (venous blood),Continuous,9948,9890,58,0.5830317651789304,,,62.717007077856415,8.066681218457868,63.2,57.9,67.9,10.000000000000007,23.4,111.8,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,ALB,Albumin (venous blood),Continuous,9948,9844,104,1.045436268596703,,,41.13331978870377,5.838139247042318,42.1,37.6,45.3,7.699999999999996,20,59.9,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,DBIL,Direct bilirubin (venous blood),Continuous,9948,9769,179,1.7993566546039406,,,2.127845224690347,2.4629667798237826,1.6,0.6,2.8,2.1999999999999997,0,20,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,IBIL,Indirect bilirubin (venous blood),Continuous,9948,9942,6,0.06031363088057901,,,6.607936028968015,7.1044026032588885,5.1,2.9,8.2,5.299999999999999,0,97,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,ALT,Alanine aminotransferase (venous blood),Continuous,9948,9734,214,2.1511861680739846,,,30.338689130881452,27.171609103612056,22.3,15.1,33.4,18.299999999999997,2.1,199.9,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,Ca,Total calcium (venous blood),Continuous,9948,9731,217,2.1813429835142744,,,2.34469941424314,0.22402879251404093,2.36,2.24,2.47,0.22999999999999998,0.03,7.53,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,GGT,Gamma-glutamyl transferase (venous blood),Continuous,9948,9724,224,2.251708886208283,,,24.11409913615796,28.366637432074313,13.6,10.275,23.1,12.825000000000001,0,200,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,GLO,Globulin (venous blood),Continuous,9948,9932,16,0.16083634901487737,,,21.758749496576723,5.852947481999248,21.3,17.7,25.2,7.5,4.1,49.9,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,Na+,Sodium (venous blood),Continuous,9948,9732,216,2.1712907117008444,,,139.01845458281957,3.5576631328876203,139.3,137,141.2,4.199999999999989,117.4,176.5,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,K+,Potassium (venous blood),Continuous,9948,9732,216,2.1712907117008444,,,4.288238799835594,0.5718956189869451,4.25,3.92,4.62,0.7000000000000002,1.44,8.49,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,Cl-,Chloride (venous blood),Continuous,9948,9732,216,2.1712907117008444,,,104.02420879572546,4.0770792125904345,104.2,101.6,106.6,5,72.7,142.2,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,Crea,Creatinine (venous blood),Continuous,9948,9926,22,0.22114997989545637,,,30.455702196252272,15.565734609392662,27.8,22,35,13,1,284.4,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,UA,Uric acid (venous blood),Continuous,9948,9941,7,0.07036590269400884,,,246.45338497133085,99.85419983761743,234,181.2,293.8,112.60000000000002,5,1312.7,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,P,Phosphorus (venous blood),Continuous,9948,9732,216,2.1712907117008444,,,1.544526304973284,0.3461730998380397,1.55,1.33,1.76,0.42999999999999994,0.11,6.29,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,Mg2+,Magnesium (venous blood),Continuous,9948,9731,217,2.1813429835142744,,,0.8822673928681533,0.11240836498398038,0.88,0.81,0.96,0.1499999999999999,0.29,1.67,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,AST/ALT,Aspartate aminotransferase to alanine aminotransferase ratio (venous blood),Continuous,9948,9878,70,0.7036590269400884,,,1.5996365661064993,0.7814884821767132,1.51,1.03,2.06,1.03,0.09,4.96,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,BUN,Blood urea nitrogen (venous blood),Continuous,9948,9897,51,0.5126658624849216,,,3.70655148024654,1.6480251281952518,3.51,2.6,4.52,1.9199999999999995,0.2,14.49,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,TBA,Total bile acids (venous blood),Continuous,9948,7152,2796,28.10615199034982,,,7.572287472035794,6.695632809841682,5.6,3.2,9.5,6.3,0.1,49.8,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,PA,Prealbumin (venous blood),Continuous,9948,7225,2723,27.372336147969442,,,158.02546712802769,68.88577834905635,155,110,200,90,1,400,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,Cys-C,Cystatin C (venous blood),Continuous,9948,7272,2676,26.89987937273824,,,0.8421727172717273,0.3077518784445761,0.79,0.66,0.94,0.2799999999999999,0.2,4,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,Fbg,Fibrinogen (venous blood),Continuous,9948,6231,3717,37.364294330518696,,,2.68011715615471,1.323218146170804,2.35,1.78,3.285,1.5050000000000001,0.22,11.48,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,PT,Prothrombin time (venous blood),Continuous,9948,6216,3732,37.51507840772015,,,12.381177606177605,2.476603238500867,12,11.2,12.9,1.700000000000001,7.6,49.9,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,APTT,Activated partial thromboplastin time (venous blood),Continuous,9948,6204,3744,37.635705669481304,,,31.039635718891038,8.730654472328531,29.5,26,33.8,7.799999999999997,15.1,118.1,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,TT,Thrombin time (venous blood),Continuous,9948,6190,3758,37.77643747486932,,,17.795945072697897,2.9839688063083503,17.4,16.1,18.9,2.799999999999997,11.3,55.4,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,PT-INR,Prothrombin time international normalized ratio (venous blood),Continuous,9948,6195,3753,37.72617611580217,,,1.0448845843422114,0.15141256769744404,1.02,0.96,1.1,0.14000000000000012,0.66,2.49,Raw blank; observed zero retained,
+Internal,All,Laboratory Tests,D-Dimer,D-dimer (venous blood),Continuous,9948,6234,3714,37.33413751507841,,,1.7966143727943538,2.211988302725887,1,0.29,2.31,2.02,0,20.43,Raw blank; observed zero retained,
+Internal,All,Symptoms,Fever,Fever,Binary,9948,9948,0,0,2509,25.221149979895458,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Symptoms,Cough,Cough,Binary,9948,9948,0,0,2241,22.52714113389626,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Symptoms,Mental deficiency,Mental deficiency,Binary,9948,9948,0,0,1620,16.28468033775633,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Symptoms,Loss of appetite,Loss of appetite,Binary,9948,9948,0,0,2005,20.15480498592682,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Symptoms,Pain,Pain,Binary,9948,9948,0,0,1629,16.375150784077203,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Diagnosis,Pneumonia,Pneumonia,Binary,9948,9948,0,0,3340,33.57458785685565,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Diagnosis,Respiratory tract infection,Respiratory tract infection,Binary,9948,9948,0,0,1557,15.651387213510253,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Diagnosis,Hypopotassaemia,Hypopotassaemia,Binary,9948,9948,0,0,1224,12.303980699638117,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Diagnosis,Septicaemia,Septicaemia,Binary,9948,9948,0,0,987,9.921592279855247,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Diagnosis,Bone marrow suppression,Bone marrow suppression,Binary,9948,9948,0,0,896,9.006835544833132,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Diagnosis,Diarrhoea,Diarrhoea,Binary,9948,9948,0,0,1107,11.127864897466827,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Diagnosis,Anemia,Anemia,Binary,9948,9948,0,0,1088,10.93687173301166,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+Internal,All,Diagnosis,Leukaemia,Leukaemia,Binary,9948,9948,0,0,810,8.142340168878166,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Demographic,Sex(Female),Sex,Binary,347,347,0,0,158,45.53314121037464,,,,,,,,,Raw blank; observed zero retained,0 = Male; 1 = Female
+External,All,Demographic,Age,Age at encounter (years),Continuous,347,347,0,0,,,7.1585014409221905,5.288848127034474,5,3,12,9,0,19,Raw blank; observed zero retained,
+External,All,Medication,Penicillin,Penicillin,Binary,347,347,0,0,161,46.39769452449568,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Cephalosporins,Cephalosporins,Binary,347,347,0,0,250,72.04610951008645,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Aminoglycosides,Aminoglycosides,Binary,347,347,0,0,9,2.5936599423631126,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Macrolides antibiotics,Macrolides antibiotics,Binary,347,347,0,0,46,13.256484149855908,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Anti-tumor antibiotics,Anti-tumor antibiotics,Binary,347,347,0,0,6,1.7291066282420748,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Other antibiotics,Other antibiotics,Binary,347,347,0,0,1,0.2881844380403458,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Ibuprofen,Ibuprofen,Binary,347,347,0,0,150,43.22766570605187,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Dexamethasone,Dexamethasone,Binary,347,347,0,0,41,11.815561959654179,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Ambroxol,Ambroxol,Binary,347,347,0,0,136,39.19308357348703,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Lidocaine,Lidocaine,Binary,347,347,0,0,36,10.37463976945245,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Cytarabine,Cytarabine,Binary,347,347,0,0,5,1.440922190201729,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Ribavirin,Ribavirin,Binary,347,347,0,0,5,1.440922190201729,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Granisetron,Granisetron,Binary,347,347,0,0,1,0.2881844380403458,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Adenosine,Adenosine,Binary,347,347,0,0,24,6.916426512968299,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Amino acid,Amino acid,Binary,347,347,0,0,58,16.714697406340058,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Heparin,Heparin,Binary,347,347,0,0,10,2.881844380403458,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Mesna,Mesna,Binary,347,347,0,0,9,2.5936599423631126,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Sodium Sulfonate,Sodium Sulfonate,Binary,347,347,0,0,13,3.7463976945244957,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Methotrexate,Methotrexate,Binary,347,347,0,0,4,1.1527377521613833,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Furosemide,Furosemide,Binary,347,347,0,0,0,0,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Budesonide,Budesonide,Binary,347,347,0,0,90,25.936599423631122,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Chloral hydrate,Chloral hydrate,Binary,347,347,0,0,3,0.8645533141210374,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Prednisone,Prednisone,Binary,347,347,0,0,13,3.7463976945244957,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Mannitol,Mannitol,Binary,347,347,0,0,29,8.357348703170029,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Vincristine,Vincristine,Binary,347,347,0,0,1,0.2881844380403458,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Ipratropium Bromide,Ipratropium Bromide,Binary,347,347,0,0,91,26.22478386167147,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Omeprazole,Omeprazole,Binary,347,347,0,0,29,8.357348703170029,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Dehydroandrograpolide,Dehydroandrograpolide,Binary,347,347,0,0,194,55.90778097982709,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Phosphocreatine,Phosphocreatine,Binary,347,347,0,0,13,3.7463976945244957,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Cimetidine,Cimetidine,Binary,347,347,0,0,139,40.05763688760807,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Salbutamol,Salbutamol,Binary,347,347,0,0,62,17.86743515850144,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Glycerine Enema,Glycerine Enema,Binary,347,347,0,0,21,6.051873198847262,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,RhGM-CSF,RhGM-CSF,Binary,347,347,0,0,2,0.5763688760806917,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Mentha canadensis L.,Mentha canadensis L.,Binary,347,347,0,0,3,0.8645533141210374,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Montmorillonite,Montmorillonite,Binary,347,347,0,0,25,7.204610951008646,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Kangfuxin Liquid,Kangfuxin Liquid,Binary,347,347,0,0,19,5.475504322766571,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Cyclophosphamide,Cyclophosphamide,Binary,347,347,0,0,11,3.170028818443804,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,6-Mercaptopurine,6-Mercaptopurine,Binary,347,347,0,0,0,0,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Calamine camphor lotion,Calamine camphor lotion,Binary,347,347,0,0,0,0,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Calcium Carbonate,Calcium Carbonate,Binary,347,347,0,0,2,0.5763688760806917,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Loratadine,Loratadine,Binary,347,347,0,0,11,3.170028818443804,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Medication,Golden Bifid,Golden Bifid,Binary,347,347,0,0,1,0.2881844380403458,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Laboratory Tests,AST,Aspartate aminotransferase (venous blood),Continuous,347,338,9,2.5936599423631126,,,37.73681065088758,22.51336496275571,32.05,26,42.825,16.825000000000003,9.9,195.8,Raw blank; observed zero retained,
+External,All,Laboratory Tests,LDH,Lactate dehydrogenase (venous blood),Continuous,347,308,39,11.239193083573488,,,354.2963701298701,189.53818155357985,286.65,223.9,452,228.1,96,973,Raw blank; observed zero retained,
+External,All,Laboratory Tests,ALP,Alkaline phosphatase (venous blood),Continuous,347,338,9,2.5936599423631126,,,170.52844674556212,66.44984402215232,166.41750000000002,134,209.852,75.852,43.6,463.326,Raw blank; observed zero retained,
+External,All,Laboratory Tests,TBIL,Total bilirubin (venous blood),Continuous,347,344,3,0.8645533141210374,,,9.967866279069769,9.53721897626916,7.5,5.4,11.8,6.4,0.1,90.1,Raw blank; observed zero retained,
+External,All,Laboratory Tests,TP,Total protein (venous blood),Continuous,347,343,4,1.1527377521613833,,,68.65458600583091,7.228548724226533,69.2,64.6,73.1,8.5,32.8,87.7,Raw blank; observed zero retained,
+External,All,Laboratory Tests,ALB,Albumin (venous blood),Continuous,347,344,3,0.8645533141210374,,,43.04942441860465,4.884593473311634,43.25,40.3,46.3,6,20.4,58.1,Raw blank; observed zero retained,
+External,All,Laboratory Tests,DBIL,Direct bilirubin (venous blood),Continuous,347,341,6,1.7291066282420748,,,2.2895865102639297,2.319240211982432,2,0,3.3,3.3,0,13.5,Raw blank; observed zero retained,
+External,All,Laboratory Tests,IBIL,Indirect bilirubin (venous blood),Continuous,347,301,46,13.256484149855908,,,7.15505315614618,8.439266108919957,5,3.31,7.6,4.289999999999999,0,69.8,Raw blank; observed zero retained,
+External,All,Laboratory Tests,ALT,Alanine aminotransferase (venous blood),Continuous,347,337,10,2.881844380403458,,,25.94372700296736,26.88514584306047,17.7,12.2,25.7,13.5,4,190,Raw blank; observed zero retained,
+External,All,Laboratory Tests,Ca,Total calcium (venous blood),Continuous,347,304,43,12.39193083573487,,,2.3040559210526315,0.23698833749794512,2.35,2.2,2.4425,0.24249999999999972,1.356,2.94,Raw blank; observed zero retained,
+External,All,Laboratory Tests,GGT,Gamma-glutamyl transferase (venous blood),Continuous,347,333,14,4.034582132564841,,,22.490456456456457,29.273409321688455,13,10.5,19,8.5,1,190.261,Raw blank; observed zero retained,
+External,All,Laboratory Tests,GLO,Globulin (venous blood),Continuous,347,309,38,10.951008645533141,,,25.277478964401293,5.144505115823231,25.1,22,28.8,6.800000000000001,11.8,49.3,Raw blank; observed zero retained,
+External,All,Laboratory Tests,Na+,Sodium (venous blood),Continuous,347,312,35,10.086455331412104,,,138.10001602564103,4.935855424162168,137.965,135.275,140.21499999999997,4.939999999999969,123.7,173,Raw blank; observed zero retained,
+External,All,Laboratory Tests,K+,Potassium (venous blood),Continuous,347,311,36,10.37463976945245,,,4.176456591639872,0.49743483010984474,4.1,3.895,4.4375,0.5425,3.2,6.6,Raw blank; observed zero retained,
+External,All,Laboratory Tests,Cl-,Chloride (venous blood),Continuous,347,311,36,10.37463976945245,,,102.45617363344051,4.908206521742617,102.6,100.1,105,4.900000000000006,78,148,Raw blank; observed zero retained,
+External,All,Laboratory Tests,Crea,Creatinine (venous blood),Continuous,347,343,4,1.1527377521613833,,,39.399428571428565,16.92055037261734,35,28.1,45.9,17.799999999999997,16,136.947,Raw blank; observed zero retained,
+External,All,Laboratory Tests,UA,Uric acid (venous blood),Continuous,347,344,3,0.8645533141210374,,,299.9607877906977,114.32730326270354,284.95,233.75,341.225,107.47500000000002,57.611,856.9,Raw blank; observed zero retained,
+External,All,Laboratory Tests,P,Phosphorus (venous blood),Continuous,347,260,87,25.072046109510087,,,1.4776423076923075,0.36903706343361253,1.44,1.2595,1.6724999999999999,0.4129999999999998,0.505,3.59,Raw blank; observed zero retained,
+External,All,Laboratory Tests,Mg2+,Magnesium (venous blood),Continuous,347,260,87,25.072046109510087,,,0.8858961538461539,0.16824926576114804,0.86,0.8,0.9117500000000001,0.11175000000000002,0.52,1.76,Raw blank; observed zero retained,
+External,All,Laboratory Tests,AST/ALT,Aspartate aminotransferase to alanine aminotransferase ratio (venous blood),Continuous,347,189,158,45.53314121037464,,,1.7932814814814815,0.8353032153794964,1.7,1.2,2.2,1.0000000000000002,0.1622,4.8,Raw blank; observed zero retained,
+External,All,Laboratory Tests,BUN,Blood urea nitrogen (venous blood),Continuous,347,6,341,98.27089337175792,,,2.83,1.1036847375949348,3.29,2.355,3.565,1.21,0.94,3.76,Raw blank; observed zero retained,
+External,All,Laboratory Tests,TBA,Total bile acids (venous blood),Continuous,347,127,220,63.40057636887608,,,8.214393700787403,9.636308092485073,4.3,2.3499999999999996,10.55,8.200000000000001,0,47.8,Raw blank; observed zero retained,
+External,All,Laboratory Tests,PA,Prealbumin (venous blood),Continuous,347,126,221,63.68876080691643,,,161.90584126984126,66.97689178699324,152.65,110.7915,196.8655,86.074,15,382,Raw blank; observed zero retained,
+External,All,Laboratory Tests,Cys-C,Cystatin C (venous blood),Continuous,347,153,194,55.90778097982709,,,0.8415751633986928,0.34061061061466585,0.78,0.69,0.96,0.27,0.32,3.979,Raw blank; observed zero retained,
+External,All,Laboratory Tests,Fbg,Fibrinogen (venous blood),Continuous,347,74,273,78.6743515850144,,,3.02372972972973,1.2690581373957368,2.798,2.0675,3.6275,1.56,0.79,6.194,Raw blank; observed zero retained,
+External,All,Laboratory Tests,PT,Prothrombin time (venous blood),Continuous,347,72,275,79.2507204610951,,,13.702777777777778,3.299038367025284,12.95,12,14,2,9.4,28.7,Raw blank; observed zero retained,
+External,All,Laboratory Tests,APTT,Activated partial thromboplastin time (venous blood),Continuous,347,73,274,78.96253602305475,,,35.843835616438355,10.452471614957469,33.8,30.4,38.4,8,24.1,90.1,Raw blank; observed zero retained,
+External,All,Laboratory Tests,TT,Thrombin time (venous blood),Continuous,347,72,275,79.2507204610951,,,17.659583333333334,3.379380907341078,17.25,15.775,18.45,2.674999999999999,13,36.5,Raw blank; observed zero retained,
+External,All,Laboratory Tests,PT-INR,Prothrombin time international normalized ratio (venous blood),Continuous,347,70,277,79.82708933717579,,,1.1190000000000002,0.18209051738555504,1.08,1.02,1.17,0.1499999999999999,0.83,2.01,Raw blank; observed zero retained,
+External,All,Laboratory Tests,D-Dimer,D-dimer (venous blood),Continuous,347,61,286,82.42074927953891,,,2.271606557377049,2.369634235338783,1.23,0.5,2.9,2.4,0,9.11,Raw blank; observed zero retained,
+External,All,Symptoms,Fever,Fever,Binary,347,347,0,0,184,53.02593659942363,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Symptoms,Cough,Cough,Binary,347,347,0,0,149,42.93948126801153,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Symptoms,Mental deficiency,Mental deficiency,Binary,347,347,0,0,145,41.78674351585014,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Symptoms,Loss of appetite,Loss of appetite,Binary,347,347,0,0,169,48.70317002881844,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Symptoms,Pain,Pain,Binary,347,347,0,0,119,34.293948126801155,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Diagnosis,Pneumonia,Pneumonia,Binary,347,347,0,0,90,25.936599423631122,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Diagnosis,Respiratory tract infection,Respiratory tract infection,Binary,347,347,0,0,37,10.662824207492795,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Diagnosis,Hypopotassaemia,Hypopotassaemia,Binary,347,347,0,0,21,6.051873198847262,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Diagnosis,Septicaemia,Septicaemia,Binary,347,347,0,0,4,1.1527377521613833,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Diagnosis,Bone marrow suppression,Bone marrow suppression,Binary,347,347,0,0,9,2.5936599423631126,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Diagnosis,Diarrhoea,Diarrhoea,Binary,347,347,0,0,6,1.7291066282420748,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Diagnosis,Anemia,Anemia,Binary,347,347,0,0,12,3.4582132564841497,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present
+External,All,Diagnosis,Leukaemia,Leukaemia,Binary,347,347,0,0,13,3.7463976945244957,,,,,,,,,Blank = absence (coded 0); observed 0 retained,0 = absent; 1 = present

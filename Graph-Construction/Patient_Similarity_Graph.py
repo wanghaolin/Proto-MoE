@@ -27,13 +27,13 @@ def load_and_preprocess_data(train_path, valid_path):
         drug_features = df[drug_cols]
         if (drug_features < 0).values.any() or (drug_features > 1).values.any():
             invalid_drug = drug_features[(drug_features < 0) | (drug_features > 1)].stack()
-            raise ValueError(f"out of range：\n{invalid_drug.head()}")
+            raise ValueError(f"Drug features out of range [0, 1]:\n{invalid_drug.head()}")
 
         clinical_features = df[clinical_cols]
         z_scores = (clinical_features - clinical_features.mean()) / clinical_features.std()
         if (z_scores.abs() > 5).any().any():
             outlier_count = (z_scores.abs() > 5).sum().sum()
-            print(f"{name} contain {outlier_count} outlier（|Z-score|>5）")
+            print(f"{name} contains {outlier_count} outliers (|Z-score| > 5)")
 
     validate_features(train_df[drug_cols + clinical_cols], "Training cohort")
     validate_features(valid_df[drug_cols + clinical_cols], "validation cohort")
@@ -57,18 +57,12 @@ class GraphBuilder:
         self.min_components = min_components
 
     def _calculate_jaccard(self, drug_matrix):
+        """Pairwise Jaccard similarity over binary drug-usage vectors."""
         if np.isnan(drug_matrix).any():
-            raise ValueError("NaN")
+            raise ValueError("Drug matrix contains NaN values")
         if (drug_matrix < 0).any() or (drug_matrix > 1).any():
-            raise ValueError("out of 0-1")
+            raise ValueError("Drug matrix values out of [0, 1] range")
 
-        intersection = np.dot(drug_matrix, drug_matrix.T)
-        row_sums = drug_matrix.sum(axis=1)
-        union = row_sums[:, None] + row_sums - intersection
-        return intersection / (union + 1e-8)
-
-    def _calculate_jaccard(self, drug_matrix):
-        """Jaccard"""
         intersection = np.dot(drug_matrix, drug_matrix.T)
         row_sums = drug_matrix.sum(axis=1)
         union = row_sums[:, None] + row_sums - intersection
@@ -93,7 +87,7 @@ class GraphBuilder:
                              {'weight': edge_weight[i].item()})
                           for i in range(edge_index.shape[1])])
         except Exception as e:
-            print(f"edge index error：{edge_index.shape}")
+            print(f"Edge index error: {edge_index.shape}")
             raise e
         components = sorted(connected_components(G), key=lambda x: len(x), reverse=True)
         if len(components) < self.min_components:
@@ -113,7 +107,7 @@ class GraphBuilder:
     def build_graph(self, df, drug_cols):
         if not all(col in df.columns for col in drug_cols):
             missing = set(drug_cols) - set(df.columns)
-            raise ValueError(f"Missing drug feature column：{missing}")
+            raise ValueError(f"Missing drug feature columns: {missing}")
         drug_matrix = df[drug_cols].values.astype(float)
         jaccard_sim = self._calculate_jaccard(drug_matrix)
         raw_edges = self._get_topk_edges(jaccard_sim)
@@ -140,10 +134,10 @@ if __name__ == "__main__":
      drug_cols) = load_and_preprocess_data(CONFIG['train_path'], CONFIG['valid_path'])
     def check_tensor(tensor, name):
         if torch.isnan(tensor).any():
-            raise ValueError(f"{name}contains NaN values")
+            raise ValueError(f"{name} contains NaN values")
         if torch.isinf(tensor).any():
-            raise ValueError(f"{name}Contains Inf values")
-        print(f"{name}Verification passed：Shape={tensor.shape}，Range=[{tensor.min():.2f}, {tensor.max():.2f}]")
+            raise ValueError(f"{name} contains Inf values")
+        print(f"{name} verification passed: Shape={tensor.shape}, Range=[{tensor.min():.2f}, {tensor.max():.2f}]")
     check_tensor(x_train, "Training feature matrix")
     check_tensor(x_valid, "Verify feature matrix")
 
@@ -177,8 +171,8 @@ if __name__ == "__main__":
         check_tensor(data.x, f"{name}.x")
         check_tensor(data.edge_index, f"{name}.edge_index")
         check_tensor(data.edge_attr, f"{name}.edge_attr")
-        print(f"{name} Number of nodes：{data.num_nodes}")
-        print(f"{name} Number of edges：{data.edge_index.shape[1] // 2}")
+        print(f"{name}: Number of nodes: {data.num_nodes}")
+        print(f"{name}: Number of edges: {data.edge_index.shape[1] // 2}")
     validate_graph_data(train_data, "Training graph")
     validate_graph_data(valid_data, "Validation graph")
     torch.save(train_data, 'train_graph-homo.pt')

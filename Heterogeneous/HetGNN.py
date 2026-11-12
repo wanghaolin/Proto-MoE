@@ -6,17 +6,16 @@ import torch.nn.functional as F
 from matplotlib import pyplot as plt
 from matplotlib.patches import Polygon as MplPolygon
 from scipy.spatial import ConvexHull
-from sklearn.metrics import classification_report, roc_auc_score, precision_score, recall_score, matthews_corrcoef, \
+from sklearn.metrics import roc_auc_score, precision_score, recall_score, matthews_corrcoef, \
     f1_score, confusion_matrix, average_precision_score
 from sklearn.cluster import KMeans
 from sklearn.manifold import TSNE
 from sklearn.model_selection import StratifiedKFold
-from torch_geometric.nn import SAGEConv, HeteroConv, Linear
+from torch_geometric.nn import SAGEConv, HeteroConv
 from torch_geometric.utils import dropout_edge
 import scipy.sparse as sp
 import numpy as np
 import os
-import gc
 import umap
 import matplotlib
 import torch.utils.checkpoint as checkpoint
@@ -178,7 +177,7 @@ def plot_comparison_distribution(raw_features, learned_embeddings, labels, proto
                 hull_points = points[hull.vertices]
                 poly = MplPolygon(hull_points, closed=True, facecolor=color, alpha=0.2, edgecolor=color, linewidth=2)
                 ax.add_patch(poly)
-            except Exception as e:
+            except Exception:
                 pass
 
     ax.set_title(f"{method}: Learned Embeddings with Cluster Boundaries")
@@ -522,7 +521,7 @@ class ImprovedPrototypeLayer(nn.Module):
         if total == 0: return
         for i in range(self.num_prototypes):
             cnt = len(self.prototype_samples.get(i, []))
-            print(f"原型 {i}: {cnt} ({cnt / total * 100:.1f}%)")
+            print(f"Prototype {i}: {cnt} ({cnt / total * 100:.1f}%)")
 
 
 class HetGNNEncoder(nn.Module):
@@ -1072,7 +1071,7 @@ def enhanced_three_stage_training(model, train_data, epochs_per_stage=500, lr=0.
 
     if os.path.exists('final_best_model.pt'):
         model.load_state_dict(torch.load('final_best_model.pt', weights_only=False))
-        print(f"✓ Restored Final Best Model")
+        print("Restored Final Best Model")
 
     for f in ['stage2_model.pt', 'final_best_model.pt', 'best_checkpoint.pt', 'checkpoint.pt']:
         if os.path.exists(f): os.remove(f)
@@ -1187,9 +1186,9 @@ def main_han_proto_moe():
     CONFIG = {
         'train_graph_path': 'train_graph-Hetero.pt',
         'valid_graph_path': 'valid_graph-Hetero.pt',
-        'output_dir': 'F:\\HetGNNProtoMoE',
-        'model_save_dir': 'F:\\HetGNNProtoMoE\\models',
-        'prototype_export_dir': 'F:\\HetGNNProtoMoE\\prototype_samples',
+        'output_dir': os.path.join('outputs', 'HetGNNProtoMoE'),
+        'model_save_dir': os.path.join('outputs', 'HetGNNProtoMoE', 'models'),
+        'prototype_export_dir': os.path.join('outputs', 'HetGNNProtoMoE', 'prototype_samples'),
         'num_prototypes': 10,
         'num_experts': 6,
         'use_elbow_method': True
@@ -1198,7 +1197,6 @@ def main_han_proto_moe():
         if isinstance(d, str) and not d.endswith('.pt'): os.makedirs(d, exist_ok=True)
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f"Device: {device}")
-    os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 
     try:
         print("Loading Heterogeneous Data...")

@@ -1,17 +1,15 @@
 import numpy as np
 import pandas as pd
-import joblib
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, TensorDataset
 from sklearn.base import BaseEstimator, ClassifierMixin, clone
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
-from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import (matthews_corrcoef, precision_score,
-                             recall_score, f1_score, roc_auc_score, confusion_matrix, average_precision_score, precision_recall_curve)
+                             recall_score, f1_score, roc_auc_score, confusion_matrix, average_precision_score)
 from sklearn.ensemble import (RandomForestClassifier, ExtraTreesClassifier,
                               GradientBoostingClassifier, AdaBoostClassifier)
 from xgboost import XGBClassifier
@@ -356,8 +354,9 @@ class SklearnDeepWrapper(BaseEstimator, ClassifierMixin):
         return np.argmax(probs, axis=1)
 
 def load_data():
-    train = pd.read_csv('ADR-Train.csv', encoding='gb2312', low_memory=False)
-    valid = pd.read_csv('ADR-Valid.csv', encoding='gb2312',low_memory=False)
+    # gb18030 is a superset of gb2312 and decodes the same files safely.
+    train = pd.read_csv('ADR-Train.csv', encoding='gb18030', low_memory=False)
+    valid = pd.read_csv('ADR-Valid.csv', encoding='gb18030', low_memory=False)
 
     X_train = train.drop(columns=['label'])
     y_train = train['label']
@@ -401,6 +400,7 @@ def main():
     input_dim = X_train.shape[1]
     print(f"Data Loaded. Input Dimensions: {input_dim}")
 
+    cb_task_type = 'GPU' if torch.cuda.is_available() else 'CPU'
     MODELS = {
         'RandomForest': RandomForestClassifier(n_estimators=200, max_depth=7, max_features='sqrt', criterion='entropy', bootstrap=False, random_state=RANDOM_STATE, n_jobs=-1),
         'XGBoost': XGBClassifier(n_estimators=200, max_depth=5, learning_rate=0.1, subsample=0.7, colsample_bytree=0.7, reg_alpha=0.5, reg_lambda=1, random_state=RANDOM_STATE, eval_metric='logloss', n_jobs=-1),
@@ -412,7 +412,7 @@ def main():
         'GradientBoosting': GradientBoostingClassifier(n_estimators=200, max_depth=7, learning_rate=0.1, subsample=0.8,max_features='sqrt',n_iter_no_change=10, random_state=RANDOM_STATE),
         'AdaBoost': AdaBoostClassifier(n_estimators=200, learning_rate=0.1, random_state=RANDOM_STATE, algorithm='SAMME.R'),
         'QDA': QuadraticDiscriminantAnalysis(reg_param=0.3),
-        'catboost': CatBoostClassifier(iterations=200, learning_rate=0.01,depth=6,l2_leaf_reg=5,random_seed=RANDOM_STATE, verbose=0,task_type='GPU')
+        'catboost': CatBoostClassifier(iterations=200, learning_rate=0.01, depth=6, l2_leaf_reg=5, random_seed=RANDOM_STATE, verbose=0, task_type=cb_task_type)
     }
     print("Initializing Deep Learning Tabular Experts...")
 
@@ -481,14 +481,19 @@ def main():
                 optimal_threshold = find_optimal_threshold(y_fold_val, y_proba)
                 y_pred = (y_proba >= optimal_threshold).astype(int)
 
+                fold_recall = recall_score(y_fold_val, y_pred, pos_label=1, zero_division=0)
+                fold_cm = confusion_matrix(y_fold_val, y_pred, labels=[0, 1])
+                fold_tn, fold_fp = fold_cm[0, 0], fold_cm[0, 1]
+                fold_specificity = fold_tn / (fold_tn + fold_fp) if (fold_tn + fold_fp) > 0 else 0.0
                 cv_results[name].append({
                     'mcc': matthews_corrcoef(y_fold_val, y_pred),
                     'precision': precision_score(y_fold_val, y_pred, pos_label=1, zero_division=0),
-                    'recall': recall_score(y_fold_val, y_pred, pos_label=1, zero_division=0),
+                    'recall': fold_recall,
                     'f1': f1_score(y_fold_val, y_pred, pos_label=1, zero_division=0),
                     'roc_auc': roc_auc_score(y_fold_val, y_proba),
                     'auprc': average_precision_score(y_fold_val, y_proba),
-                    'G-Mean': np.sqrt(precision_score(y_fold_val, y_pred, pos_label=1) * recall_score(y_fold_val, y_pred, pos_label=1)),
+                    # G-Mean is sqrt(sensitivity * specificity), matching the external validation block.
+                    'G-Mean': np.sqrt(fold_recall * fold_specificity),
                     'threshold': optimal_threshold
                 })
                 print(f"Done. AUC: {cv_results[name][-1]['roc_auc']:.4f}")
@@ -499,7 +504,7 @@ def main():
     for name in MODELS:
         thresholds = [res['threshold'] for res in cv_results[name]]
         optimal_thresholds[name] = np.mean(thresholds)
-        print(f"{name} averge best thresholds: {optimal_thresholds[name]:.3f}")
+        print(f"{name} average best thresholds: {optimal_thresholds[name]:.3f}")
 
     print("\n=== Training Final Models ===")
     scaler = StandardScaler()
@@ -515,7 +520,7 @@ def main():
             optimal_threshold = optimal_thresholds[name]
             y_pred_val = (y_proba_val >= optimal_threshold).astype(int)
 
-            cm = confusion_matrix(y_valid_np, y_pred_val)
+            cm = confusion_matrix(y_valid_np, y_pred_val, labels=[0, 1])
             tn, fp, fn, tp = cm.ravel()
             specificity = tn / (tn + fp) if (tn + fp) > 0 else 0
             recall = recall_score(y_valid_np, y_pred_val, pos_label=1, zero_division=0)

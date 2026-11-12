@@ -11,7 +11,6 @@ def build_heterogeneous_graph(df_path, drug_cols, output_path):
     diseases_list = ['Pneumonia', 'Upper respiratory tract infection', 'Hypotension', 'Sepsis', 'Bone marrow suppression', 'Diarrhea', 'Anemia', 'Leukemia']
 
     all_feature_cols = [col for col in df.columns if col not in ['Patient_id', 'label']]
-    clinical_cols = [col for col in all_feature_cols if col not in drug_cols]
     hetero_data = HeteroData()
 
     # Patient nodes
@@ -34,7 +33,7 @@ def build_heterogeneous_graph(df_path, drug_cols, output_path):
     disease_features = torch.eye(len(diseases_list), dtype=torch.float)
     hetero_data['disease'].x = disease_features
 
-    print("CTD data")
+    print("Reading drug-gene interaction data (CTD)...")
     gene_file_path = 'CTD.csv'
     gene_df = pd.read_csv(gene_file_path, encoding='gb2312', low_memory=False)
     genes_list = gene_df.columns.tolist()[1:]
@@ -44,8 +43,8 @@ def build_heterogeneous_graph(df_path, drug_cols, output_path):
     hetero_data['gene'].x = gene_features
     print(f"Number of gene nodes: {len(genes_list)}")
 
-    print("Read phenotype-gene relationship data")
-    phenotype_gene_path = 'CTD\\phenotype\\CTD-phenotype.csv'
+    print("Reading phenotype-gene association data...")
+    phenotype_gene_path = 'CTD/phenotype/CTD-phenotype.csv'
     phenotype_gene_df = pd.read_csv(phenotype_gene_path, encoding='gb2312', low_memory=False)
     phenotype_ids = phenotype_gene_df.iloc[:, 0].tolist()
     genes_in_phenotype_df = phenotype_gene_df.columns[1:]
@@ -55,7 +54,7 @@ def build_heterogeneous_graph(df_path, drug_cols, output_path):
     hetero_data['phenotype'].x = phenotype_features
     print(f"Number of phenotype nodes: {len(phenotype_ids)}")
 
-    # edge indexs
+    # Edge indices
     patient_to_drug_edges = []
     drug_to_patient_edges = []
 
@@ -161,7 +160,7 @@ def build_heterogeneous_graph(df_path, drug_cols, output_path):
         edge_index = hetero_data[edge_type].edge_index
         if edge_index is not None:
             src_type, _, dst_type = edge_type
-            print(f"{edge_type}Number of edge nodes: {edge_index.shape[1]}")
+            print(f"{edge_type} Number of edges: {edge_index.shape[1]}")
     return hetero_data
 
 if __name__ == "__main__":
